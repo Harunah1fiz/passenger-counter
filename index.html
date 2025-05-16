@@ -11,18 +11,27 @@
   
 </style>
 <body>
-  <div>
+  <div class="body">
    <h1>People entered</h1>
    <h2 id ="count-el">0</h2>
-   <button id="increment-btn" onclick="increment();">add</button>
-   <button id ="save-btn" onclick="save();"> save</button>
+   <button id="increment-btn">add</button>
+   <button id ="save-btn" > save</button>
   <p id="save-el">Previous entries: </p>
 </div>
    <p  id="welcome-el"></p>
     <script>
       let saveEl = document.getElementById("save-el")
         let countEl = document.getElementById("count-el") 
+      const containerEl = document.querySelector('.body')
         let count=0
+      containerEl.addEventListener('click', function (e) {
+        button = e.target.closest('button')
+
+        if(!button) return;
+
+        if(button.id === "increment-btn") increment();
+        if(button.id === "save-btn") save();
+      })
      function increment(){ 
       count = count += 1;
       countEl.textContent = count;
